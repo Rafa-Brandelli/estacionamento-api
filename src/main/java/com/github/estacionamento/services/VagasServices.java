@@ -19,4 +19,16 @@ public class VagasServices {
 		public VagasModel save(VagasModel vagasModel) {
 				return vagasRepository.save(vagasModel);
 		}
+
+		public boolean existePorPlacaDeCarro(String placaDoCarro) {
+				return vagasRepository.existsByPlacaDoCarro(placaDoCarro);
+		}
+
+		public boolean existePorNumeroDaVaga(String numeroDaVaga) {
+				return vagasRepository.existsByNumeroDaVaga(numeroDaVaga);
+		}
+
+		public boolean existePorEndereco(String endereco) {
+				return vagasRepository.existsByEndereco(endereco);
+		}
 }

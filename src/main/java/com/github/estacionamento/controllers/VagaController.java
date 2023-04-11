@@ -28,6 +28,15 @@ public class VagaController {
 		}
 		@PostMapping
 		public ResponseEntity<Object>registroDaVaga(@RequestBody @Valid VagaDto vagaDto){
+				if(vagasServices.existePorPlacaDeCarro(vagaDto.getPlacaDoCarro())){
+						return ResponseEntity.status(HttpStatus.CONFLICT).body("Erro: Placa já cadastrada.");
+				}
+				if(vagasServices.existePorNumeroDaVaga(vagaDto.getNumeroDaVaga())){
+						return ResponseEntity.status(HttpStatus.CONFLICT).body("Erro: Vaga já ocupada!!");
+				}
+				if(vagasServices.existePorEndereco(vagaDto.getEndereco())) {
+						return ResponseEntity.status(HttpStatus.CONFLICT).body("Erro:Limite de vaga excedido.");
+				}
 				VagasModel vagasModel = new VagasModel();
 				BeanUtils.copyProperties(vagaDto, vagasModel);
 				vagasModel.setDataDoRegistro(LocalDateTime.now(ZoneId.of("UTC")));
