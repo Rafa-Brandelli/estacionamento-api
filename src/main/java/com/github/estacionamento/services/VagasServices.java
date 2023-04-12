@@ -45,4 +45,8 @@ public class VagasServices {
 		public Optional<VagasModel> findById(UUID id) {
 				return vagasRepository.findById(id);
 		}
+		@Transactional
+		public void delete(VagasModel vagasModel) {
+				vagasRepository.delete(vagasModel);
+		}
 }
