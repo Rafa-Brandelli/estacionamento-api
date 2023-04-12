@@ -5,6 +5,9 @@ import com.github.estacionamento.repositories.VagasRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class VagasServices {
@@ -34,5 +37,12 @@ public class VagasServices {
 
 		public boolean existePorDonodaVaga(String donoDaVaga) {
 				return vagasRepository.existsByDonoDaVaga(donoDaVaga);
+		}
+		public List<VagasModel> busqueTodos(){
+				return vagasRepository.findAll();
+		}
+
+		public Optional<VagasModel> findById(UUID id) {
+				return vagasRepository.findById(id);
 		}
 }
