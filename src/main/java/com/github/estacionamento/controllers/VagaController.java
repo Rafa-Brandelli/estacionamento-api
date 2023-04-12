@@ -37,6 +37,9 @@ public class VagaController {
 				if(vagasServices.existePorEndereco(vagaDto.getEndereco())) {
 						return ResponseEntity.status(HttpStatus.CONFLICT).body("Erro:Limite de vaga excedido.");
 				}
+				if(vagasServices.existePorDonodaVaga(vagaDto.getDonoDaVaga())) {
+						return ResponseEntity.status(HttpStatus.CONFLICT).body("Erro:Esta pessoa já possui uma vaga em seu nome .");
+				}
 				VagasModel vagasModel = new VagasModel();
 				BeanUtils.copyProperties(vagaDto, vagasModel);
 				vagasModel.setDataDoRegistro(LocalDateTime.now(ZoneId.of("UTC")));

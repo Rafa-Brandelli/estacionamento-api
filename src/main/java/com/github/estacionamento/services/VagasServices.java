@@ -2,7 +2,6 @@ package com.github.estacionamento.services;
 
 import com.github.estacionamento.models.VagasModel;
 import com.github.estacionamento.repositories.VagasRepository;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -15,6 +14,7 @@ public class VagasServices {
 		public VagasServices(VagasRepository vagasRepository) {
 				this.vagasRepository = vagasRepository;
 		}
+
 		@Transactional
 		public VagasModel save(VagasModel vagasModel) {
 				return vagasRepository.save(vagasModel);
@@ -30,5 +30,9 @@ public class VagasServices {
 
 		public boolean existePorEndereco(String endereco) {
 				return vagasRepository.existsByEndereco(endereco);
+		}
+
+		public boolean existePorDonodaVaga(String donoDaVaga) {
+				return vagasRepository.existsByDonoDaVaga(donoDaVaga);
 		}
 }

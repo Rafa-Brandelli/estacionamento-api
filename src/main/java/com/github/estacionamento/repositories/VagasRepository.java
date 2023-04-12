@@ -12,4 +12,5 @@ public interface VagasRepository extends JpaRepository<VagasModel, UUID> {
 		boolean existsByPlacaDoCarro(String placaDoCarro);
 		boolean existsByNumeroDaVaga(String numeroDaVaga);
 		boolean existsByEndereco(String endereco);
+		boolean existsByDonoDaVaga(String donoDaVaga);
 }
